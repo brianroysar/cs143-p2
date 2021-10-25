@@ -66,7 +66,8 @@ while ($row = $rs->fetch_assoc()) {
     if ($dod == NULL) {
         $dod = "Still Alive";
     }
-    print "$id, $first, $last, $sex, $dob, $dod <br>"; 
+    echo "<a href='actor.php?id=$id'> $id, $first, $last, $sex, $dob, $dod </a>";
+    print "<br>"; 
 }
 print "<br>";
 

@@ -53,7 +53,8 @@ while ($row = $rs->fetch_assoc()) {
     $year = $row['year'];
     $rating = $row['rating'];
     $company = $row['company'];
-    print "$id, $title, $year, $rating, $company<br>";
+    echo "<a href='movie.php?id=$id'> $id, $title, $year, $rating, $company </a>";
+    print "<br>";
 }
 
 print "<br>";
@@ -67,6 +68,13 @@ while ($row = $rs->fetch_assoc()) {
     $avg = $row['avg_rating']; 
     print "average rating: $avg <br>";
 }
+
+
+echo "<form action='/review.php'>
+<input type='hidden' name='id' value={$id}><br>
+<input type='submit' value='add Comment'>
+</form>";
+
 
 // Showing all user comments, including the reviewer’s name, rating, comments and the time it was provided.
 $query = "SELECT * FROM Review WHERE mid = '".$movie_id."'";

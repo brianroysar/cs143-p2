@@ -18,7 +18,7 @@ in their first or last name columns. To support case-insensitive search, you can
 both the column (to be searched in) and the string (that you search for).
 
 Note: If you do not know how you can create a “search box” in your page, so that the browser can user 
-inputs and send it over to the server as a URL parameter, read a tutorial on HTML Forms.*/
+inputs and send it over to the server as a URL parameter, read a tutorial on HTML Forms. (ALL DONE)*/ 
 ?>
 
 
