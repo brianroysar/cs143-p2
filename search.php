@@ -23,3 +23,16 @@ inputs and send it over to the server as a URL parameter, read a tutorial on HTM
 
 
 <h1>Search Page</h1>
+<h2> SEARCH BY ACTOR/ACRESS NAME </h2> 
+<form action="/actor.php">
+  <label for="actor">Actor/Actress: </label><br>
+  <input type="text" id="actor" name="actor"><br>
+  <input type="submit" value="Submit">
+</form>
+
+<h2> SEARCH BY MOVIE NAME </h2> 
+<form action="/movie.php">
+  <label for="movie">Movie:</label><br>
+  <input type="text" id="movie" name="movie"><br>
+  <input type="submit" value="Submit">
+</form>

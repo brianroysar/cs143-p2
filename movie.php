@@ -6,7 +6,7 @@ on the movie “Charlies Angels.” This page must
 
 1. Show hyperlinks to the actor pages for each actor that was in this movie. (DONE)
 2. Show the average score of the movie based on the user feedback. (DONE)
-3. Show all user comments, including the reviewer’s name, rating, comments and the time it was provided.
+3. Show all user comments, including the reviewer’s name, rating, comments and the time it was provided. (DONE)
 4. Contain an “add Comment” link/button, which links to the movie’s review page described below. */
 ?>
 
@@ -63,7 +63,6 @@ while ($row = $rs->fetch_assoc()) {
     $comment = $row['comment'];
     print "Reviewer Name: $name, Time of Review: $time, Rating: $rating, Comment: $comment<br>"; 
 }
-
 
 // Showing the actors that are in the movie chosen
 print "Actors that are in the movie:";
