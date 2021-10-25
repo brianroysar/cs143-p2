@@ -15,3 +15,54 @@ in your PHP code.
 ?>
 
 <h1>Actor Page</h1>
+
+<?php
+
+// Connecting to database
+$db = new mysqli('localhost', 'cs143', '', 'class_db');
+if ($db->connect_errno > 0) { 
+    die('Unable to connect to database [' . $db->connect_error . ']'); 
+}
+
+// Using GET to identify which actor we want information on
+$actor_id = $_GET['id'];
+
+// Query to get information on the specific actor
+$query = "SELECT * FROM Actor WHERE id ='".$actor_id."'";
+$rs = $db->query($query);
+
+// Showing the results of query to actor basic information
+print "id, first, last, sex, dob, dod <br>";
+
+while ($row = $rs->fetch_assoc()) { 
+    $id = $row['id']; 
+    $first = $row['first']; 
+    $last = $row['last'];
+    $sex = $row['sex'];
+    $dob = $row['dob'];
+    $dod = $row['dod'];
+    if ($dod == NULL) {
+        $dod = "Still Alive";
+    }
+    print "$id, $first, $last, $sex, $dob, $dod <br>"; 
+}
+print "<br>";
+
+// Getting the information relating to the movies that the actor has played in
+print "Movies that actor is in: ";
+print "<br>";
+
+$query = "SELECT * 
+FROM (SELECT * 
+FROM Actor as A, MovieActor as MA 
+WHERE id ='".$actor_id."' and A.id = MA.aid) as temp, Movie as M 
+WHERE temp.mid = M.id";
+
+$rs = $db->query($query);
+
+while ($row = $rs->fetch_assoc()) { 
+    $title = $row['title']; 
+    print "$title <br>"; 
+}
+
+?>
