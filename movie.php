@@ -41,6 +41,29 @@ while ($row = $rs->fetch_assoc()) {
 
 print "<br>";
 
+// Showing the actors that are in the movie chosen
+print "Actors that are in the movie:";
+print "<br>";
+
+$query = "SELECT * 
+FROM Actor as A, MovieActor as MA 
+WHERE MA.mid ='".$movie_id."' and A.id = MA.aid";
+$rs = $db->query($query);
+
+while ($row = $rs->fetch_assoc()) { 
+    $id = $row['id']; 
+    $first = $row['first']; 
+    $last = $row['last'];
+    $sex = $row['sex'];
+    $dob = $row['dob'];
+    $dod = $row['dod'];
+    if ($dod == NULL) {
+        $dod = "Still Alive";
+    }
+    echo "<a href='actor.php?id=$id'> $id, $first, $last, $sex, $dob, $dod </a>";
+    print "<br>"; 
+}
+
 
 
 ?>
