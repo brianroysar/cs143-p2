@@ -29,26 +29,7 @@ if ($db->connect_errno > 0) {
 // Using GET to identify which actor we want information on
 $actor_id = $_GET['id'];
 // Query to get information on the specific actor
-if ($actor_id){
-    $query = "SELECT * FROM Actor WHERE id ='".$actor_id."'";
-}
-
-// When we are searching actors by name instead of id (from search.php)
-$actor_name = $_GET['actor'];
-// Query by name
-if ($actor_name){
-    $query = "SELECT * FROM Actor WHERE";
-    $split_array = explode(" ", $actor_name);
-    $len_array = count($split_array);
-    for ($x = 0; $x < $len_array; $x++) {
-        $query = $query . " concat(first,last) LIKE '%".$split_array[$x]."%'";
-        if ($x != $len_array-1){
-            $query = $query . " AND";
-        }
-    }
-    // echo $query;
-    // print "<br>";
-}
+$query = "SELECT * FROM Actor WHERE id ='".$actor_id."'";
 
 // Making the query
 $rs = $db->query($query);
@@ -71,7 +52,6 @@ while ($row = $rs->fetch_assoc()) {
 }
 print "<br>";
 
-if ($actor_id){
 // Getting the information relating to the movies that the actor has played in
 print "Movies that actor is in: ";
 print "<br>";
@@ -90,5 +70,5 @@ while ($row = $rs->fetch_assoc()) {
     echo "<a href='movie.php?id=$mid'> $mid, $title </a>";
     print "<br>"; 
 }
-}
+
 ?>

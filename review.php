@@ -48,9 +48,4 @@ else {
     <input type='submit'>
     </form>";
 }
-
-
-
-
-
 ?>
